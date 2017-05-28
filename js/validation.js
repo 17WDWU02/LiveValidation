@@ -64,6 +64,8 @@ $(document).ready(function(){
 			console.log($(this).val());
 			if($(this).val().length !== 0 ){
 				$(this).parent().find('span.input-errors .required').remove();
+			} else if( ($(this).val().length === 0) && ( $("li.required").length === 0) ) {
+				$(this).parent().find('span.input-errors ul').append("<li class='required'>This is required</li>");
 			}
 		});
 

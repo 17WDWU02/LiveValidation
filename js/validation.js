@@ -32,40 +32,35 @@ $(document).ready(function(){
 	});
 
 
-
-
-
-
-
-
-
-
-
-
 	//Validate Password
 	//Focus is when you are actually in an element
 	$("#password")
 		.focus(function(){
-		if($(this).val().length === 0){
-			$(this).parent().find('span.input-errors').empty();
-			$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
-			$(this).parent().find('span.input-errors ul').append(
-					"<li class='required'>This is required</li>"+
-					"<li class='min'>Must be at least 6 characters</li>"+
-					"<li class='uppercase'>Must include at least 1 Uppercase character</li>"+
-					"<li class='numbers'>Must include at least 3 Numbers</li>"+
-					"<li class='special'>Must include at least 1 Special Character</li>"
+			if($(this).val().length === 0){
+				$(this).parent().find('span.input-errors').empty();
+				$(this).parent().find('span.input-errors').append("<ul class='error'></ul>");
+				$(this).parent().find('span.input-errors ul').append(
+						"<li class='required'>This is required</li>"+
+						"<li class='min'>Must be at least 6 characters</li>"+
+						"<li class='uppercase'>Must include at least 1 Uppercase character</li>"+
+						"<li class='numbers'>Must include at least 3 Numbers</li>"+
+						"<li class='special'>Must include at least 1 Special Character</li>"
 
-					)
-			}
+						)
+				}
 		}).blur(function(){
 
 		}).keyup(function(){
-			console.log($(this).val());
 			if($(this).val().length !== 0 ){
 				$(this).parent().find('span.input-errors .required').remove();
 			} else if( ($(this).val().length === 0) && ( $("li.required").length === 0) ) {
 				$(this).parent().find('span.input-errors ul').append("<li class='required'>This is required</li>");
+			}
+			var uppercasePattern = /(?=(.*[A-Z])).{1,}/;
+			if($(this).val().match(uppercasePattern)){
+				$(this).parent().find('span.input-errors .uppercase').remove();
+			} else if( (!$(this).val().match(uppercasePattern)) && ($("li.uppercase").length === 0) ){
+				$(this).parent().find('span.input-errors ul').append("<li class='uppercase'>Must include at least 1 Uppercase Character</li>")
 			}
 		});
 

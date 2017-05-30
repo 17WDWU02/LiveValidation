@@ -12,6 +12,9 @@ $(document).ready(function(){
 	$("#submitButton").click(function(event){
 		event.preventDefault();
 		//The form should only submit when all of the input field variables are true
+		if(ValidFirstName === true && ValidLastName === true){
+			$("#LiveValidation").submit();
+		}
 	});
 
 	//Validate First name

@@ -27,16 +27,22 @@ $(document).ready(function(){
 			//if(x=true) and if(x) both mean the same thing and are expecting the value of true
 			//This line calls the required function and passes through the current element (Go to required function) 
 			if(required($(this))){
+				//If the value of true gets returned from the required function then proceed with these lines
 				ValidFirstName = false;
 				return;
 			} else if(minLen($(this), 5)){
 				ValidFirstName = false;
 				return;
 			}
+			//If all of the functions return a value of false then it will skip all of the if statements
+			//Then we just want to turn ValidFirstName to true;
 			ValidFirstName = true;
 		}).blur(function(){
 
 		}).keyup(function(){
+			//This is another short hand way of writing an if statement.
+			//all it says is if the function returns a value of true then to return out of the keyup function
+			//does the exact same thing as the if statements above
 			if(required($(this))) return;
 			if(minLen($(this), 5)) return;
 			ValidFirstName = true;

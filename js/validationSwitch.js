@@ -17,10 +17,10 @@ $(document).ready(function(){
 		.focus(function(){
 
 		}).blur(function(){
-
+			$(this).parent().find('span.input-errors').text($(this).val());
 		}).keyup(function(){
-			var FirstNameRules = ["required", "min:5", "max:20"];
-			ValidFirstName = validate($(this), FirstNameRules);
+			// var FirstNameRules = ["required", "min:5", "max:20"];
+			// ValidFirstName = validate($(this), FirstNameRules);
 		})
 
 	$("#lastname")
